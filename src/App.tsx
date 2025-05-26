@@ -1,14 +1,15 @@
 
 import './App.css'
-import Login from './pages/login/Login'
+// import Login from './pages/login/Login'
+import CreateEmployee from './pages/createEmployee/CreateEmployee'
 
 function App() {
-  //const [count, setCount] = useState(0)
-
+  
   return (
     <>
     
-      <Login />
+      <CreateEmployee />
+      {/* <Login /> */}
 
     </>
   )
