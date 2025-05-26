@@ -1,6 +1,48 @@
 import './CreateEmployeeForm.css'
 import Input from '../input/Input'
+import InputFormElement from '../inputFormElement/InputFormElement'
+import SelectFormElement from '../selectFormElement/SelectFormElement'
+
 const CreateEmployeeForm = () => {
+
+    const inputs=[{
+        label:"Employee Name",
+        placeholder: "Employee Name"
+    },
+    {
+        label: "Joining Date",
+        placeholder: "Joining Date"
+    },
+    {
+        label: "Experience (Yrs)",
+        placeholder:"2"
+    }]
+
+    const selectFields=[{
+        label:"Department",
+        disabled:"Choose Department",
+        options:[
+            {value:"Development"},
+            {value:"Testing"},
+            {value:"Quality Assurance"}
+        ]
+    },{
+        label:"Role",
+        disabled:"Choose Role",
+        options:[
+            {value:"Senior"},
+            {value:"Lead"},
+            {value:"Associate"}
+        ]
+    },{
+        label:"Status",
+        disabled:"Status",
+        options:[
+            {value:"Available"},
+            {value:"On project"},
+            {value:"On leave"}
+        ]
+    }]
 
     return(
 
@@ -8,53 +50,18 @@ const CreateEmployeeForm = () => {
             <form action="">
                     <div className="form-flex-container">
 
-                        <div className="form-elements">
-                            <p>Employee Name</p>
-                            <Input type="text" placeholder="Employee Name" name="" id="" className=''/>
-                        </div>
-
-                        <div className="form-elements">
-                            <p>Joining Date</p>
-                            <Input type="text" placeholder="Joining Date" name='' id='' className='' />
-                        </div>
-
-                        <div className="form-elements">
-                            <p>Experience (Yrs)</p>
-                            <Input type="number" placeholder="2" name='' id=''/>
-                        </div>
-
-                        <div className="form-elements">
-                            <p>Department</p>
-                            <select name="Department" id="department">
-                                <option value="" disabled selected>Choose Department</option>
-                                <option value="Development">Development</option>
-                                <option value="Testing">Testing</option>
-                                <option value="Quality Assurance">Quality Assurance</option>
-
-                            </select>
-                        </div>
-
-                        <div className="form-elements">
-                            <p>Role</p>
-                            <select name="Role" id="role" >
-                                <option value="" disabled selected>Choose Role</option>
-                                <option value="Senior">Senior</option>
-                                <option value="Lead">Lead</option>
-                                <option value="Associate">Associate</option>
-
-                            </select>
-                        </div>
-
-                        <div className="form-elements">
-                            <p>Status</p>
-                            <select name="Status" id="status" >
-                                <option value="" disabled selected>Status</option>
-                                <option value="Available">Available</option>
-                                <option value="On Porject">On Project</option>
-                                <option value="On Leave">On Leave</option>
-
-                            </select>
-                        </div>
+                        {
+                            inputs.map(element => {
+                                return <InputFormElement label={element.label} 
+                                    placeholer={element.placeholder}/>
+                            })
+                        }{   
+                            selectFields.map(element => {
+                                return <SelectFormElement label={element.label} 
+                                    disabled={element.disabled} 
+                                    options={element.options}/>
+                            })
+                        }
 
                         <div className="form-elements">
                             <p>Address</p>
