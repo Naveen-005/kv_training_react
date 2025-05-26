@@ -1,6 +1,6 @@
 import './Sidebar.css'
-import kv_logo from '../../assets/kv-logo.png'
-import icon from '../../assets/icon.svg'
+// import kv_logo from '../../assets/kv-logo.png'
+//import icon from '../../assets/icon.svg'
 
 const Sidebar = (props:{
     pageName:string
@@ -11,12 +11,12 @@ const Sidebar = (props:{
         <>
             <aside>
                 <div className="logo-container">
-                    <a href=""><img className="logo" src={kv_logo} alt="key value logo" /></a>
+                    <a href=""><img className="logo" src='/assets/kv-logo.png' alt="key value logo" /></a>
                 </div>
                 <nav>
                     <div className="nav-item">
                         <div className="icon-container">
-                            <img src={icon} alt="icon" />
+                            <img src="/assets/icon.svg" alt="icon" />
                         </div>
                         <p>{props.pageName}</p>
                     </div>
