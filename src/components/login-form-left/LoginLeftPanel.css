@@ -1,0 +1,30 @@
+.blue-box {
+    background-color: #03afee3d;
+    width: 45%;
+    min-width: 150px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.photo-circle {
+    background-color: white;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.login-image {
+    object-fit: cover;
+    overflow: hidden;
+    width: 400px;
+    height: 400px;
+}
+

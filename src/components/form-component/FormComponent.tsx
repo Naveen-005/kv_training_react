@@ -1,13 +1,14 @@
 import Button from "../button/Button"
 import './FormComponent.css'
+import logo from "../../assets/kv-logo.png"
 
 const FormComponent = () => {
 
     return (
-        <>
+        
             <div className="login-form">
                 <form action="">
-                    <img src="images/kv-logo.png" alt="" className="logo-image form-element" />
+                    <img src={logo} alt="" className="logo-image form-element" />
                     <div className="over-box">
                         <label htmlFor="username" ><p>username</p></label>
                     </div>
@@ -17,7 +18,7 @@ const FormComponent = () => {
 
                 </form>
             </div>
-        </>
+    
     )
 }
 
