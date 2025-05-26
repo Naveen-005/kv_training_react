@@ -1,0 +1,17 @@
+.login-btn {
+    background-color: #03AEEE;
+    color: white;
+    height: 35px;
+    border: 1px solid #EBE9ED;
+}
+
+.form-element {
+    display: block;
+}
+
+input {
+    width: 300px;
+    height: 30px;
+    margin-top: 30px;
+
+}
