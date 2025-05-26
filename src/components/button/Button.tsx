@@ -1,10 +1,14 @@
 import './Button.css'
 
-const Button = () => {
+const Button = (props:{
+    type:string,
+    value:string,
+    className: string
+}) => {
 
     return(
         <>
-            <input type="submit" value="Login" className="form-element login-btn"></input>
+            <input type={props.type} value={props.value} className={props.className} />
         </>
         
 

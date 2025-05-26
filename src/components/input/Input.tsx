@@ -1,0 +1,18 @@
+
+const Input = (props:{
+    type:string,
+    placeholder:string,
+    name:string,
+    id:string,
+    className:string
+
+}) => {
+
+    return(
+        <>
+            <input type={props.type} placeholder={props.placeholder} name={props.name} id={props.id} className={props.className} />
+        </>
+    )
+}
+
+export default Input

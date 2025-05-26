@@ -1,6 +1,7 @@
 import Button from "../button/Button"
 import './FormComponent.css'
 import logo from "../../assets/kv-logo.png"
+import Input from "../input/Input"
 
 const FormComponent = () => {
 
@@ -12,9 +13,9 @@ const FormComponent = () => {
                     <div className="over-box">
                         <label htmlFor="username" ><p>username</p></label>
                     </div>
-                    <input type="text" id="username" name="username" className="form-element" />
-                    <input type="password" placeholder="Password" name="password" id="password" className="form-element" />
-                    <Button />
+                    <Input type="text" placeholder="" id="username" name="username" className="form-element" />
+                    <Input type="password" placeholder="Password" name="password" id="password" className="form-element"/>
+                    <Button type="submit" value="Login" className="form-element login-btn"/>
 
                 </form>
             </div>
