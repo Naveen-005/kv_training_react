@@ -12,7 +12,16 @@
 }
 
 .form-element {
-    display: block;
+    width: 300px;
+    height: 30px;
+    margin-top: 30px;
+    outline: 0;
+    display: flex;
+    
+}
+
+.form-element:focus{
+    border-color: #03AEEE;
 }
 
 .over-box {
@@ -24,16 +33,57 @@
     background-color: white;
     width: 22%;
     font-size: small;
+    z-index: 2;
 }
 
-input {
-    width: 300px;
-    height: 30px;
-    margin-top: 30px;
+/* input {
+    
 
+} */
+
+input:focus{
+    outline: 0;
 }
 
 input::placeholder {
   font-weight: bold;
   color: black;
+}
+
+.error{
+
+    color: red;
+}
+
+.endAdornment{
+
+    width: 40px;
+    /* height: 100%; */
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: -30px;
+}
+
+.parentInput{
+    /* display: flex;
+    width: 300px;
+    height: 30px; */
+    position: relative;
+ 
+}
+
+.checkbox{
+    width: 15px;
+    display: flex;
+}
+
+.parentContainer{
+    display: flex;
+}
+
+.label{
+    padding-top: 34px;
+    padding-left: 5px;
+    font-size: 13px;
 }

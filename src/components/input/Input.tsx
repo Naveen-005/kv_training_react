@@ -1,3 +1,4 @@
+import type { Ref, ChangeEvent } from "react"
 
 const Input = (props:{
     type?:string,
@@ -6,19 +7,29 @@ const Input = (props:{
     id?:string,
     className?:string
     value?:string
+    onChange?: (event: ChangeEvent<HTMLInputElement>)=>void
+    ref?:Ref<HTMLInputElement>
+    endAdornment?: React.ReactNode
+    label?:string
 
 }) => {
 
     return(
-        <>
+        <div className="parentInput">
             <input type={props.type} 
                 placeholder={props.placeholder}
                 name={props.name}
                 id={props.id}
                 className={props.className}
-                value={props.value}    
+                value={props.value}
+                onChange={props.onChange}
+                ref={props.ref}
+
             />
-        </>
+            {
+                props.endAdornment ? props.endAdornment : null
+            }
+        </div>
     )
 }
 
