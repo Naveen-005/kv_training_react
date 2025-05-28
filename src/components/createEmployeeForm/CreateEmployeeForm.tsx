@@ -53,26 +53,28 @@ const CreateEmployeeForm = () => {
                         {
                             inputs.map(element => {
                                 return <InputFormElement label={element.label} 
-                                    placeholer={element.placeholder}/>
+                                    placeholer={element.placeholder}
+                                    className='form-input'/>
                             })
                         }{   
                             selectFields.map(element => {
                                 return <SelectFormElement label={element.label} 
                                     disabled={element.disabled} 
-                                    options={element.options}/>
+                                    options={element.options}
+                                    className='form-input'/>
                             })
                         }
 
                         <div className="form-elements">
                             <p>Address</p>
-                            <Input type="text" placeholder="Flat No./House No." />
-                            <Input type="text" placeholder="Address Line 1" />
-                            <Input type="text" placeholder="Address Line 2" />
+                            <Input type="text" placeholder="Flat No./House No." className='form-input'/>
+                            <Input type="text" placeholder="Address Line 1" className='form-input'/>
+                            <Input type="text" placeholder="Address Line 2" className='form-input'/>
                         </div>
 
                     </div>
 
-                    <div>
+                    <div className="btn-group">
                         <Input className="primary button" type="submit" value="Create" />
                         <Input className="secondary button" type="reset" value="Cancel" />
                     </div>

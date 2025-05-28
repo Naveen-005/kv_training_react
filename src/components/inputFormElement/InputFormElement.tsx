@@ -3,7 +3,8 @@ import Input from "../input/Input"
 const InputFormElement = (props:{
 
     label:string,
-    placeholer:string
+    placeholer:string,
+    className:string,
 }) => {
 
     return (
@@ -11,7 +12,7 @@ const InputFormElement = (props:{
         <>
             <div className="form-elements">
                 <p>{props.label}</p>
-                <Input type="text" placeholder={props.placeholer} name="" id="" className=''/>
+                <Input type="text" placeholder={props.placeholer} name="" id="" className={props.className}/>
             </div>
         </>
     )

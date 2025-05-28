@@ -3,7 +3,7 @@ import './Button.css'
 const Button = (props:{
     type?:string,
     value?:string,
-    className: string,
+    className?: string,
     onClick?:VoidFunction,
     disabled?:boolean
 }) => {

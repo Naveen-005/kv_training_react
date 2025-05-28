@@ -1,6 +1,7 @@
 const SelectFormElement = (props:{
     label: string,
     disabled:string,
+    className?:string,
     options:{
         value:string
     }[]
@@ -11,7 +12,7 @@ const SelectFormElement = (props:{
         <>
             <div className="form-elements">
                 <p>{props.label}</p>
-                <select name={props.label} id={props.label}>
+                <select name={props.label} id={props.label} className={props.className}>
                     <option value="" disabled selected>{props.disabled}</option>
                     {
                         props.options.map(element => {

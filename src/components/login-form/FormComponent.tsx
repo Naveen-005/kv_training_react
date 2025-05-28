@@ -4,11 +4,14 @@ import './FormComponent.css'
 import Input from "../input/Input"
 import React, { useEffect, useRef, useState } from "react"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
+import { useNavigate } from "react-router-dom"
 
 const FormComponent = () => {
 
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
+
+    const navigate = useNavigate()
 
     const [usernameError,setUsernameError]=useState(false)
 
@@ -51,6 +54,16 @@ const FormComponent = () => {
         setPassword(event.target.value)
     }
 
+    const handleLogin = () => {
+
+        if(username=='admin' && password=="admin"){
+            localStorage.setItem("isLoggedIn","true")
+            navigate('/employees')
+        }
+            
+
+    }
+
     return (
         
             <div className="login-form">
@@ -85,7 +98,7 @@ const FormComponent = () => {
                     
                     
                     <Button type="submit" value="Login" className="form-element login-btn"
-                        disabled={username.length<1 || password.length<1}/>
+                        disabled={username.length<1 || password.length<1} onClick={handleLogin}/>
 
                 </form>
             </div>
