@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react"
 
-export const useLocalStorage = (storageVar:string) => {
+export const useLocalStorage = (storageVar:string):[boolean,any] => {
 
-    const [value,setValue]=useState("")
+    const [value,setValue]=useState(false)
 
     useEffect(() => {
 
-        localStorage.getItem(storageVar)
+        const tmpValue = localStorage.getItem(storageVar)
 
+        if(tmpValue=="true"){
+            setValue(true)
+        }
+
+    },[])
+
+    useEffect(() => {
+
+        localStorage.setItem(storageVar,value.toString())
+        
     },[value])
 
-    return useState(value)
+    return [value,setValue]
     
 }

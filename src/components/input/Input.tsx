@@ -11,6 +11,7 @@ const Input = (props:{
     ref?:Ref<HTMLInputElement>
     endAdornment?: React.ReactNode
     label?:string
+    checked?:boolean
 
 }) => {
 
@@ -24,6 +25,7 @@ const Input = (props:{
                 value={props.value}
                 onChange={props.onChange}
                 ref={props.ref}
+                checked={props.checked}
 
             />
             {

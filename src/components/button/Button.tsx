@@ -4,12 +4,15 @@ const Button = (props:{
     type?:string,
     value?:string,
     className: string,
-    onClick?:VoidFunction
+    onClick?:VoidFunction,
+    disabled?:boolean
 }) => {
 
     return(
         <>
-            <input type={props.type} value={props.value} className={props.className} onClick={props.onClick} />
+            <input type={props.type} value={props.value} className={props.className} onClick={props.onClick} 
+            
+                disabled={props.disabled}/>
         </>
         
 
