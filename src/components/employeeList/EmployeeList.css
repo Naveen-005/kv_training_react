@@ -57,3 +57,52 @@
 .list-icon{
     margin-right: 30px;
 }
+
+.heading-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.end-items{
+    display: flex;
+    align-items: center;
+}
+
+.select-icon{
+    background-color: #03afee5d;
+    border-radius: 15px;
+    height: 25px;
+    border: 0;
+    width: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.item{
+    margin-right: 10px;
+}
+
+.btn-item{
+    background-color: #03afee5d;
+    height: 40px;
+    padding-right: 30px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.round-btn{
+
+    height: 100%;
+    width: 40px;
+    background-color: #03AEEE;
+    border-radius: 50%;
+    border: 0;
+    color: white;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.btn-text{
+    padding-left: 20px;
+}

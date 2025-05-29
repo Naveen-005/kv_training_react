@@ -7,8 +7,11 @@ const EmployeeDetails = () => {
 
     return(
         <>
-            {/* <p>Employee Details</p>
-            <p>Employee id = {id}</p> */}
+
+            <div className="heading-container">
+                <h1>Employee Details</h1>
+            </div>
+
             <div className='mainContent'>
 
             <div className="layer">

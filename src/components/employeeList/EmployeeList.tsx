@@ -1,5 +1,6 @@
 import './EmployeeList.css'
 import EmployeeRow from '../employeeRow/EmployeeRow'
+import { useNavigate } from 'react-router-dom'
 
 const EmployeeList = () => {
 
@@ -23,8 +24,43 @@ const EmployeeList = () => {
             value:'3 Years'
         }]
 
+    const navigate = useNavigate()
+
+    const handleCreate = () => {
+
+        navigate("/employees/create")
+    }
+
     return(
         <> 
+
+            <div className="heading-container">
+                <h1>Employee List</h1>
+                
+                <div className='end-items'>
+
+                    <span className='item'>
+                        Filter By
+                    </span>
+
+                    <select name="status" id="cars" className='select-icon item'>
+                        <option value="Status" disabled selected>Status</option>
+                        <option value="All">All</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Probation">Probation</option>
+                    </select>
+
+                    <div className='btn-item item' onClick={handleCreate}>
+                        <button type='button' className='round-btn'>+</button>
+                        <span className='btn-text'>
+                            Create Employee    
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+
             <div className='over-main'>
 
                 <div className="table-row heading-row">

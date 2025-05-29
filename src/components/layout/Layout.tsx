@@ -27,14 +27,8 @@ const Layout = (props:{
             <section>
                 <div className="blank-white">
                 </div>
-                
-                <div className="heading-container">
-                    <h1>{props.heading}</h1>
-                </div>
 
-
-                    <Outlet />
-                    
+                <Outlet />
             
             </section>
         </>

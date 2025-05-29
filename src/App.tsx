@@ -8,6 +8,7 @@ import Layout from './components/layout/Layout'
 import EmployeeList from './components/employeeList/EmployeeList'
 import EmployeeDetails from './components/employeeDetails/EmployeeDetails'
 import SrchPrms from './components/searchParams/SearchParams'
+import EditEmployee from './components/editEmployee/EditEmployee'
 
 
 const router = createBrowserRouter([
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
     children:[
       {index:true, element: <EmployeeList />},
       {path: "create", element: <CreateEmployeeForm />},
-      {path:":id", element: <EmployeeDetails/>}
+      {path:":id", element: <EmployeeDetails/>},
+      {path:":id/edit",element: <EditEmployee/>}
     ]
   },{
     path:"/test",
