@@ -1,38 +1,72 @@
 import './EmployeeList.css'
 import EmployeeRow from '../employeeRow/EmployeeRow'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const EmployeeList = () => {
 
-    // const employee= [{
-    //         className:'table-element',
-    //         value:'Vishal M'
-    //     },{
-    //         className:'table-element',
-    //         value:'KV123'
-    //     },{
-    //         className:'table-element',
-    //         value:'12.02.2021'
-    //     },{
-    //         className:'table-element',
-    //         value:'Full Stack',
-    //     },{
-    //         className:'table-element',
-    //         value:'Active',
-    //     },{
-    //         className:'table-element',
-    //         value:'3 Years'
-    //     }]
+    const [searchParams,setSearchParams]=useSearchParams()
 
-    const employee = {
+    const employeeList=[{
 
         name:"Vishal M",
-        id:123,
+        id:1,
         joiningDate:new Date("2021-05-21"),
         role:"Developer",
         status:"Active",
         experience:3
 
+    },{
+
+        name:"Harishankar Manoj",
+        id:2,
+        joiningDate:new Date("2021-05-21"),
+        role:"Marketing Officer",
+        status:"Probation",
+        experience:3
+
+    },{
+
+        name:"Harishankar Manoj",
+        id:3,
+        joiningDate:new Date("2021-05-21"),
+        role:"Developer",
+        status:"Inactive",
+        experience:3
+
+    },{
+
+        name:"Harishankar Manoj",
+        id:4,
+        joiningDate:new Date("2021-05-21"),
+        role:"Developer",
+        status:"Inactive",
+        experience:3
+
+    }]
+
+    console.log('executing')
+
+    const [filteredEmployees, setFilteredEmployees] = useState(employeeList)
+
+    useEffect(() => {
+
+        const filterStatus=searchParams.get('status')
+        if(filterStatus && filterStatus!='All'){
+
+            setFilteredEmployees(employeeList.filter((employee)=>employee.status==filterStatus))
+        }else if(filterStatus == 'All'){
+
+            setFilteredEmployees(employeeList)
+        }
+
+        
+
+    },[searchParams])
+
+    const handleStatusChange = (event:any) => {
+
+        setSearchParams({status:event?.target.value})
     }
 
     const navigate = useNavigate()
@@ -54,7 +88,7 @@ const EmployeeList = () => {
                         Filter By
                     </span>
 
-                    <select name="status" id="cars" className='select-icon item'>
+                    <select name="status" id="cars" className='select-icon item' onChange={handleStatusChange}>
                         <option value="Status" disabled selected>Status</option>
                         <option value="All">All</option>
                         <option value="Active">Active</option>
@@ -84,16 +118,14 @@ const EmployeeList = () => {
                     <div className="table-element">Experience</div>
                     <div className="table-element">Actions</div>
 
-                    
                 </div>
 
-                <EmployeeRow employee={employee}/>
+                {
+                    filteredEmployees.map(employee => 
 
-                <EmployeeRow employee={employee}/>
+                        <EmployeeRow employee={employee} />
 
-                <EmployeeRow employee={employee}/>
-
-                <EmployeeRow employee={employee}/>
+                )}
 
             </div>
     

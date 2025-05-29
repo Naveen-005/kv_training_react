@@ -1,6 +1,13 @@
+import { useParams } from "react-router-dom"
 import EmployeeForm from "../employeeForm/EmployeeForm"
+import InputFormElement from "../inputFormElement/InputFormElement"
 
 const EditEmployee = () => {
+
+    const {id}=useParams()
+
+    const empIdField = <InputFormElement label="Employee ID" placeholer="Employee Id" 
+        className='form-input' value={id} disabled={true}/>
 
     return(
         <>
@@ -12,7 +19,8 @@ const EditEmployee = () => {
 
             <div className='mainContent'>
           
-                <EmployeeForm buttonType="button" buttonValue="Update"/>
+                <EmployeeForm buttonType="button" buttonValue="Update"
+                    additionalFields={empIdField} disableIdEdit={true}/>
 
             </div>
 
