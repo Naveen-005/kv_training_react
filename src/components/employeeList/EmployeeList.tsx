@@ -36,7 +36,7 @@ const EmployeeList = () => {
 
             <div className="heading-container">
                 <h1>Employee List</h1>
-                
+
                 <div className='end-items'>
 
                     <span className='item'>
@@ -85,6 +85,7 @@ const EmployeeList = () => {
                 <EmployeeRow className='table-row list-row' elements={elements}/>
 
             </div>
+    
         </>
     )
 }

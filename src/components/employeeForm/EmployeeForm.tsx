@@ -7,64 +7,49 @@ const EmployeeForm = (props:{
     buttonValue:string
 }) => {
 
-    const inputs=[{
-        label:"Employee Name",
-        placeholder: "Employee Name"
-    },
-    {
-        label: "Joining Date",
-        placeholder: "Joining Date"
-    },
-    {
-        label: "Experience (Yrs)",
-        placeholder:"2"
-    }]
+    const departmentOptions= [
+        {value:"Development"},
+        {value:"Testing"},
+        {value:"Quality Assurance"}
+    ]
 
-    const selectFields=[{
-        label:"Department",
-        disabled:"Choose Department",
-        options:[
-            {value:"Development"},
-            {value:"Testing"},
-            {value:"Quality Assurance"}
-        ]
-    },{
-        label:"Role",
-        disabled:"Choose Role",
-        options:[
-            {value:"Senior"},
-            {value:"Lead"},
-            {value:"Associate"}
-        ]
-    },{
-        label:"Status",
-        disabled:"Status",
-        options:[
-            {value:"Available"},
-            {value:"On project"},
-            {value:"On leave"}
-        ]
-    }]
+    const roleOptions = [
+        {value:"Senior"},
+        {value:"Lead"},
+        {value:"Associate"}
+    ]
+
+    const statusOptions = [
+        {value:"Available"},
+        {value:"On project"},
+        {value:"On leave"}
+    ]
 
     return(
         <>
             <form action="">
                     <div className="form-flex-container">
 
-                        {
-                            inputs.map(element => {
-                                return <InputFormElement label={element.label} 
-                                    placeholer={element.placeholder}
-                                    className='form-input'/>
-                            })
-                        }{   
-                            selectFields.map(element => {
-                                return <SelectFormElement label={element.label} 
-                                    disabled={element.disabled} 
-                                    options={element.options}
-                                    className='form-input'/>
-                            })
-                        }
+                        <InputFormElement label="Employee Name" placeholer="Employee Name" className='form-input'/>
+
+                        <InputFormElement label="Joining Date" placeholer="Joining Date" className='form-input'/>
+
+                        <InputFormElement label="Experience (Yrs)" placeholer="2" className='form-input'/>
+
+                        <InputFormElement label="Email ID" placeholer="Email ID" className='form-input'/>
+
+                        <InputFormElement label="Password" placeholer="Password" className='form-input'/>
+
+                        <InputFormElement label="Pincode" placeholer="Pincode" className='form-input'/>
+
+                        <SelectFormElement label="Department" disabled="Choose Department"
+                            options={departmentOptions} className='form-input'/>
+
+                        <SelectFormElement label="Role" disabled="Choose Role"
+                            options={roleOptions} className='form-input'/>
+
+                        <SelectFormElement label="Status" disabled="status"
+                            options={statusOptions} className='form-input'/>
 
                         <div className="form-elements">
                             <p>Address</p>

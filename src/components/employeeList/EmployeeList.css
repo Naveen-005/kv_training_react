@@ -54,6 +54,14 @@
     background-color: aquamarine;
 }
 
+.probation{
+    background-color: #f0dd6e;
+}
+
+.inactive{
+    background-color: #e2212159;
+}
+
 .list-icon{
     margin-right: 30px;
 }
