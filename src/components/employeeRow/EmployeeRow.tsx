@@ -15,12 +15,13 @@ const EmployeeRow = (props:{
 
     const navigate = useNavigate()
 
-    const handleEdit = () => {
-
-        navigate("2/edit")
+    const handleEdit = (event:any) => {
+        event.stopPropagation()
+        navigate(props.employee.id+"/edit")
     }
 
-    const handleDelete = () => {
+    const handleDelete = (event:any) => {
+        event.stopPropagation()
         setDisplayDeleteAlert(true)
 
     }
@@ -35,15 +36,13 @@ const EmployeeRow = (props:{
         setDisplayDeleteAlert(false)
     }
 
-
-
     const [displayDeleteAlert,setDisplayDeleteAlert]=useState(false)
 
 
 
     return(
         <>
-            <div className="table-row list-row">
+            <div className="table-row list-row" onClick={()=>{navigate(`/employees/${props.employee.id}`)}}>
 
                 <div className="table-element">{props.employee.name}</div>
                 <div className="table-element">{props.employee.id}</div>

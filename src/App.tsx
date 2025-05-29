@@ -10,7 +10,6 @@ import EmployeeDetails from './components/employeeDetails/EmployeeDetails'
 import SrchPrms from './components/searchParams/SearchParams'
 import EditEmployee from './components/editEmployee/EditEmployee'
 
-
 const router = createBrowserRouter([
 
   {

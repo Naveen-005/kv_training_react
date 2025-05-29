@@ -1,14 +1,14 @@
-import type React from "react"
 import Input from "../input/Input"
 import InputFormElement from "../inputFormElement/InputFormElement"
 import SelectFormElement from "../selectFormElement/SelectFormElement"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const EmployeeForm = (props:{
     buttonType:string,
     buttonValue:string,
-    disableIdEdit?:boolean
-    additionalFields?:React.ReactNode
+    disableIdEdit?:boolean,
+    employee?:any
+    
 }) => {
 
     const departmentOptions= [
@@ -47,6 +47,13 @@ const EmployeeForm = (props:{
             pincode:""
         }
     })
+
+    useEffect(()=>{
+
+        if(props.employee){
+            setEmployee(props.employee)
+        }
+    },[])
 
     const handleFormChange = (event:any) => {
 
@@ -120,9 +127,6 @@ const EmployeeForm = (props:{
                         <Input type="text" placeholder="Pincode" className='form-input' 
                             value={employee.address.pincode} onChange={handleAddressChange} name="pincode"/>
                     </div>
-
-                    {/* <InputFormElement label="Pincode" placeholer="Pincode" className='form-input' 
-                        value={employee.address.pincode} onChange={handleAddressChange} name="pincode"/> */}
 
                 </div>
 
