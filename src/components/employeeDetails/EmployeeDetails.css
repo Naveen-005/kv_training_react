@@ -1,0 +1,11 @@
+.layer{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.bottom{
+
+    border-top: 1px solid #2c292970;
+ 
+}

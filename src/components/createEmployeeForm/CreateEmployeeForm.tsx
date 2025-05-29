@@ -47,6 +47,7 @@ const CreateEmployeeForm = () => {
     return(
 
         <>
+            <div className='mainContent'>
             <form action="">
                     <div className="form-flex-container">
 
@@ -80,6 +81,7 @@ const CreateEmployeeForm = () => {
                     </div>
 
             </form>
+            </div>
 
      
         </>

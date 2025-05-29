@@ -30,8 +30,8 @@ const EmployeeRow = (props:{
                 </div>
                 <div className={props.elements[5].className}>{props.elements[5].value}</div>
                 <div className="table-element">
-                    <img src="assets/delete.png" alt="" className="list-icon" onClick={handleDelete}/>
-                    <img src="assets/pencil.png" alt="" className="list-icon" onClick={handleEdit}/>
+                    <img src="/assets/delete.png" alt="" className="list-icon" onClick={handleDelete}/>
+                    <img src="/assets/pencil.png" alt="" className="list-icon" onClick={handleEdit}/>
                 </div>
 
                 

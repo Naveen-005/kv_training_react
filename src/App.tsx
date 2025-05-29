@@ -7,6 +7,7 @@ import NotFound from './components/pageNotFound/PageNotFound'
 import Layout from './components/layout/Layout'
 import EmployeeList from './components/employeeList/EmployeeList'
 import EmployeeDetails from './components/employeeDetails/EmployeeDetails'
+import SrchPrms from './components/searchParams/SearchParams'
 
 
 const router = createBrowserRouter([
@@ -26,9 +27,11 @@ const router = createBrowserRouter([
       {path: "create", element: <CreateEmployeeForm />},
       {path:":id", element: <EmployeeDetails/>}
     ]
-  },
+  },{
+    path:"/test",
+    element:<SrchPrms />
 
-  {
+  },{
     path:"*",
     element:<NotFound />
   }

@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import './EmployeeDetails.css'
 
 const EmployeeDetails = () => {
 
@@ -8,6 +9,7 @@ const EmployeeDetails = () => {
         <>
             {/* <p>Employee Details</p>
             <p>Employee id = {id}</p> */}
+            <div className='mainContent'>
 
             <div className="layer">
 
@@ -34,7 +36,7 @@ const EmployeeDetails = () => {
 
             </div>
 
-            <div className="layer">
+            <div className="layer bottom">
             
                 <div className="details">
                     <p>Address</p>
@@ -50,6 +52,8 @@ const EmployeeDetails = () => {
                     <p>Employee ID</p>
                     <p>KV7215</p>
                 </div>
+
+            </div>
 
             </div>
             
