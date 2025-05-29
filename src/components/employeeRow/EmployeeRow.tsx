@@ -3,12 +3,14 @@ import PopUpCard from "../popUpCard/PopUpCard"
 import { useNavigate } from "react-router-dom"
 
 const EmployeeRow = (props:{
-    className:string,
-    elements:{
-        className:string,
-        value:string
-    }[]
-
+    employee:{
+        name:string,
+        id:number,
+        joiningDate:Date,
+        role:string,
+        status:string,
+        experience:number
+    }
 }) => {
 
     const navigate = useNavigate()
@@ -41,16 +43,20 @@ const EmployeeRow = (props:{
 
     return(
         <>
-            <div className={props.className}>
+            <div className="table-row list-row">
 
-                <div className="table-element">{props.elements[0].value}</div>
-                <div className="table-element">{props.elements[1].value}</div>
-                <div className="table-element">{props.elements[2].value}</div>
-                <div className="table-element">{props.elements[3].value}</div>
-                <div className="table-element"> 
-                    <span className={`status ${props.elements[4].value.toLowerCase()}`}>{props.elements[4].value}</span> 
+                <div className="table-element">{props.employee.name}</div>
+                <div className="table-element">{props.employee.id}</div>
+                <div className="table-element">
+                    {props.employee.joiningDate.toLocaleDateString().replace('/','.').replace('/','.')}
                 </div>
-                <div className="table-element">{props.elements[5].value}</div>
+                <div className="table-element">{props.employee.role}</div>
+                <div className="table-element"> 
+                    <span className={`status ${props.employee.status.toLowerCase()}`}>
+                        {props.employee.status}
+                    </span> 
+                </div>
+                <div className="table-element">{props.employee.experience} Years</div>
                 <div className="table-element">
                     <img src="/assets/delete.png" alt="" className="list-icon" onClick={handleDelete}/>
                     <img src="/assets/pencil.png" alt="" className="list-icon" onClick={handleEdit}/>

@@ -4,25 +4,36 @@ import { useNavigate } from 'react-router-dom'
 
 const EmployeeList = () => {
 
-    const elements= [{
-            className:'table-element',
-            value:'Vishal M'
-        },{
-            className:'table-element',
-            value:'KV123'
-        },{
-            className:'table-element',
-            value:'12.02.2021'
-        },{
-            className:'table-element',
-            value:'Full Stack',
-        },{
-            className:'table-element',
-            value:'Active',
-        },{
-            className:'table-element',
-            value:'3 Years'
-        }]
+    // const employee= [{
+    //         className:'table-element',
+    //         value:'Vishal M'
+    //     },{
+    //         className:'table-element',
+    //         value:'KV123'
+    //     },{
+    //         className:'table-element',
+    //         value:'12.02.2021'
+    //     },{
+    //         className:'table-element',
+    //         value:'Full Stack',
+    //     },{
+    //         className:'table-element',
+    //         value:'Active',
+    //     },{
+    //         className:'table-element',
+    //         value:'3 Years'
+    //     }]
+
+    const employee = {
+
+        name:"Vishal M",
+        id:123,
+        joiningDate:new Date("2021-05-21"),
+        role:"Developer",
+        status:"Active",
+        experience:3
+
+    }
 
     const navigate = useNavigate()
 
@@ -76,13 +87,13 @@ const EmployeeList = () => {
                     
                 </div>
 
-                <EmployeeRow className='table-row list-row' elements={elements}/>
+                <EmployeeRow employee={employee}/>
 
-                <EmployeeRow className='table-row list-row' elements={elements}/>
+                <EmployeeRow employee={employee}/>
 
-                <EmployeeRow className='table-row list-row' elements={elements}/>
+                <EmployeeRow employee={employee}/>
 
-                <EmployeeRow className='table-row list-row' elements={elements}/>
+                <EmployeeRow employee={employee}/>
 
             </div>
     
