@@ -32,7 +32,7 @@
 .list-row{
 
     background-color: white;
-    box-shadow: -2px 1px 1px 1px rgba(116, 113, 113, 0.459);
+    box-shadow:0px 3px 6px #9D9D9D29;
     border-radius: 3px;
     
 
@@ -59,15 +59,15 @@
 }
 
 .active{
-    background-color: aquamarine;
+    background-color: #D3F4BE;
 }
 
 .probation{
-    background-color: #f0dd6e;
+    background-color: #F5ECB8;
 }
 
 .inactive{
-    background-color: #e2212159;
+    background-color: #FFBFBF;
 }
 
 .list-icon{

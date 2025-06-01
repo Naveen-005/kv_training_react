@@ -1,15 +1,19 @@
 import { useNavigate, useParams } from "react-router-dom"
 import './EmployeeDetails.css'
+import { useSelector } from 'react-redux'
+
 
 const EmployeeDetails = () => {
 
     const {id} = useParams()
+    const employeeList = useSelector((state:any)=> state.employees)
+    const employeeDetails = employeeList.find((employee:any) => employee.employeeId == id)
 
     const navigate = useNavigate()
 
     const handleEdit = () => {
 
-        navigate("edit")
+        navigate("/employees/"+id+"/edit")
     }
 
     return(
@@ -39,23 +43,23 @@ const EmployeeDetails = () => {
 
                 <div className="details">
                     <p className="label1">Employee Name</p>
-                    <p>Vishal M</p>
+                    <p>{employeeDetails.name}</p>
                 </div>
                 <div className="details">
                     <p className="label1">Joining Date</p>
-                    <p>12.04.2021</p>
+                    <p>{employeeDetails.dateOfJoining}</p>
                 </div>
                 <div className="details">
                     <p className="label1">Experience</p>
-                    <p>2 Yrs</p>
+                    <p>{employeeDetails.experience} Years</p>
                 </div>
                 <div className="details">
                     <p className="label1">Role</p>
-                    <p>Full Stack</p>
+                    <p>{employeeDetails.role}</p>
                 </div>
                 <div className="details">
                     <p className="label1">Status</p>
-                    <p className="status probation">Probation</p>
+                    <p className="status probation">{employeeDetails.status}</p>
                 </div>
 
             </div>
@@ -64,12 +68,15 @@ const EmployeeDetails = () => {
             
                 <div className="details address">
                     <p className="label1">Address</p>
-                    <p>House No 231, 78712st, Kerala 686008</p>
+                    <p>{employeeDetails.address.houseNo}</p>
+                    <p>{employeeDetails.address.line1}</p>
+                    <p>{employeeDetails.address.line2}</p>
+                    <p>{employeeDetails.address.pincode}</p>
                 </div>
 
                 <div className="details">
                     <p className="label1">Employee ID</p>
-                    <p>KV7215</p>
+                    <p>{employeeDetails.employeeId}</p>
                 </div>
 
             </div>

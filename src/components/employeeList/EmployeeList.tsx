@@ -2,67 +2,70 @@ import './EmployeeList.css'
 import EmployeeRow from '../employeeRow/EmployeeRow'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const EmployeeList = () => {
 
     const [searchParams,setSearchParams]=useSearchParams()
 
-    const employeeList=[{
+    // const employeeList=[{
 
-        name:"Vishal M",
-        id:1,
-        joiningDate:new Date("2021-05-21"),
-        role:"Developer",
-        status:"Active",
-        experience:3
+    //     name:"Vishal M",
+    //     id:1,
+    //     joiningDate:new Date("2021-05-21"),
+    //     role:"Developer",
+    //     status:"Active",
+    //     experience:3
 
-    },{
+    // },{
 
-        name:"Harishankar Manoj",
-        id:2,
-        joiningDate:new Date("2021-05-21"),
-        role:"Marketing Officer",
-        status:"Probation",
-        experience:3
+    //     name:"Harishankar Manoj",
+    //     id:2,
+    //     joiningDate:new Date("2021-05-21"),
+    //     role:"Marketing Officer",
+    //     status:"Probation",
+    //     experience:3
 
-    },{
+    // },{
 
-        name:"Harishankar Manoj",
-        id:3,
-        joiningDate:new Date("2021-05-21"),
-        role:"Developer",
-        status:"Inactive",
-        experience:3
+    //     name:"Harishankar Manoj",
+    //     id:3,
+    //     joiningDate:new Date("2021-05-21"),
+    //     role:"Developer",
+    //     status:"Inactive",
+    //     experience:3
 
-    },{
+    // },{
 
-        name:"Harishankar Manoj",
-        id:4,
-        joiningDate:new Date("2021-05-21"),
-        role:"Developer",
-        status:"Inactive",
-        experience:3
+    //     name:"Harishankar Manoj",
+    //     id:4,
+    //     joiningDate:new Date("2021-05-21"),
+    //     role:"Developer",
+    //     status:"Inactive",
+    //     experience:3
 
-    }]
+    // }]
 
-    console.log('executing')
+
+    const employeeList = useSelector((state:any)=> state.employees)
+    
+    console.log(employeeList)
 
     const [filteredEmployees, setFilteredEmployees] = useState(employeeList)
 
     useEffect(() => {
-
+        console.log('useEffect')
+        console.log(employeeList)
         const filterStatus=searchParams.get('status')
         if(filterStatus && filterStatus!='All'){
 
-            setFilteredEmployees(employeeList.filter((employee)=>employee.status==filterStatus))
-        }else if(filterStatus == 'All'){
+            setFilteredEmployees(employeeList.filter((employee:any)=>employee.status==filterStatus))
+        }else {
 
             setFilteredEmployees(employeeList)
         }
 
-        
-
-    },[searchParams])
+    },[searchParams, employeeList])
 
     const handleStatusChange = (event:any) => {
 
@@ -121,7 +124,7 @@ const EmployeeList = () => {
                 </div>
 
                 {
-                    filteredEmployees.map(employee => 
+                    filteredEmployees.map((employee:any) => 
 
                         <EmployeeRow employee={employee} />
 

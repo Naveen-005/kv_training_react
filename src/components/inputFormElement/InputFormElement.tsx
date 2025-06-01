@@ -9,6 +9,7 @@ const InputFormElement = (props:{
     disabled?:boolean,
     onChange?:(event: React.ChangeEvent<HTMLInputElement>)=>void,
     name?:string,
+    type?:string
 }) => {
 
     return (
@@ -16,7 +17,7 @@ const InputFormElement = (props:{
         <>
             <div className="form-elements">
                 <p>{props.label}</p>
-                <Input type="text" placeholder={props.placeholer} name={props.name} id="" 
+                <Input type={props.type || "text"} placeholder={props.placeholer} name={props.name} id="" 
                     className={props.className} value={props.value} disabled={props.disabled}
                     onChange={props.onChange}/>
             </div>

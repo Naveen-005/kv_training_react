@@ -1,23 +1,26 @@
 import { useState } from "react"
 import PopUpCard from "../popUpCard/PopUpCard"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 
 const EmployeeRow = (props:{
     employee:{
         name:string,
-        id:number,
-        joiningDate:Date,
+        employeeId:number,
+        dateOfJoining:string,
         role:string,
         status:string,
         experience:number
     }
 }) => {
 
+    const dispatch = useDispatch()
+
     const navigate = useNavigate()
 
     const handleEdit = (event:any) => {
         event.stopPropagation()
-        navigate(props.employee.id+"/edit")
+        navigate(props.employee.employeeId+"/edit")
     }
 
     const handleDelete = (event:any) => {
@@ -33,6 +36,12 @@ const EmployeeRow = (props:{
 
     const handleConfirmDelete = () => {
 
+        dispatch({type:"DELETE_EMPLOYEE",
+            payload:{
+                id:props.employee.employeeId
+            }
+
+        })
         setDisplayDeleteAlert(false)
     }
 
@@ -42,12 +51,12 @@ const EmployeeRow = (props:{
 
     return(
         <>
-            <div className="table-row list-row" onClick={()=>{navigate(`/employees/${props.employee.id}`)}}>
+            <div className="table-row list-row" onClick={()=>{navigate(`/employees/${props.employee.employeeId}`)}}>
 
                 <div className="table-element">{props.employee.name}</div>
-                <div className="table-element">{props.employee.id}</div>
+                <div className="table-element">{props.employee.employeeId}</div>
                 <div className="table-element">
-                    {props.employee.joiningDate.toLocaleDateString().replace('/','.').replace('/','.')}
+                    {props.employee.dateOfJoining}
                 </div>
                 <div className="table-element">{props.employee.role}</div>
                 <div className="table-element"> 

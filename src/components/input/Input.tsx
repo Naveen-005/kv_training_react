@@ -13,6 +13,7 @@ const Input = (props:{
     label?:string
     checked?:boolean
     disabled?:boolean
+    onClick?:any
 
 }) => {
 
@@ -28,6 +29,7 @@ const Input = (props:{
                 ref={props.ref}
                 checked={props.checked}
                 disabled={props.disabled}
+                onClick={props.onClick}
 
             />
             {

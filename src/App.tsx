@@ -1,14 +1,23 @@
 
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { Suspense,lazy } from 'react'
 import './App.css'
 import Login from './pages/login/Login'
 import CreateEmployeeForm from './components/createEmployeeForm/CreateEmployeeForm'
 import NotFound from './components/pageNotFound/PageNotFound'
 import Layout from './components/layout/Layout'
 import EmployeeList from './components/employeeList/EmployeeList'
-import EmployeeDetails from './components/employeeDetails/EmployeeDetails'
+const EmployeeDetails = lazy(()=>import ('./components/employeeDetails/EmployeeDetails'))
 import SrchPrms from './components/searchParams/SearchParams'
 import EditEmployee from './components/editEmployee/EditEmployee'
+
+const LazyLoadedEmployeeDetails = () => {
+  return(
+    <Suspense fallback={<p>Details are loading</p>}>
+      <EmployeeDetails/>
+    </Suspense>
+  )
+}
 
 const router = createBrowserRouter([
 
@@ -25,7 +34,7 @@ const router = createBrowserRouter([
     children:[
       {index:true, element: <EmployeeList />},
       {path: "create", element: <CreateEmployeeForm />},
-      {path:":id", element: <EmployeeDetails/>},
+      {path:":id", element:<LazyLoadedEmployeeDetails/>},
       {path:":id/edit",element: <EditEmployee/>}
     ]
   },{
