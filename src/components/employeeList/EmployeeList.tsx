@@ -2,65 +2,25 @@ import './EmployeeList.css'
 import EmployeeRow from '../employeeRow/EmployeeRow'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useAppSelector } from '../../store/store'
+import { useGetEmployeeListQuery } from '../../api-service/employees/employee.api'
+import type { Employee } from '../../store/employee/employee.types'
 
 const EmployeeList = () => {
 
     const [searchParams,setSearchParams]=useSearchParams()
 
-    // const employeeList=[{
-
-    //     name:"Vishal M",
-    //     id:1,
-    //     joiningDate:new Date("2021-05-21"),
-    //     role:"Developer",
-    //     status:"Active",
-    //     experience:3
-
-    // },{
-
-    //     name:"Harishankar Manoj",
-    //     id:2,
-    //     joiningDate:new Date("2021-05-21"),
-    //     role:"Marketing Officer",
-    //     status:"Probation",
-    //     experience:3
-
-    // },{
-
-    //     name:"Harishankar Manoj",
-    //     id:3,
-    //     joiningDate:new Date("2021-05-21"),
-    //     role:"Developer",
-    //     status:"Inactive",
-    //     experience:3
-
-    // },{
-
-    //     name:"Harishankar Manoj",
-    //     id:4,
-    //     joiningDate:new Date("2021-05-21"),
-    //     role:"Developer",
-    //     status:"Inactive",
-    //     experience:3
-
-    // }]
-
-
-    const employeeList = useAppSelector((state:any)=> state.employee.employees)
-    
+    const {data: employeeList} = useGetEmployeeListQuery()
+ 
     console.log("employee list= \n",employeeList)
 
     const [filteredEmployees, setFilteredEmployees] = useState(employeeList)
 
     useEffect(() => {
-        // console.log('useEffect')
-        // console.log(employeeList)
+
         const filterStatus=searchParams.get('status')
         if(filterStatus && filterStatus!='All'){
 
-            setFilteredEmployees(employeeList.filter((employee:any)=>employee.status==filterStatus))
+            setFilteredEmployees(employeeList?.filter((employee:Employee)=>employee.status.toLowerCase()==filterStatus.toLowerCase()))
         }else {
 
             setFilteredEmployees(employeeList)
@@ -125,7 +85,7 @@ const EmployeeList = () => {
                 </div>
 
                 {
-                    filteredEmployees.map((employee:any) => 
+                    filteredEmployees?.map((employee:any) => 
 
                         <EmployeeRow employee={employee} />
 

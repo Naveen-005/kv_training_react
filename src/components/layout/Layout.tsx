@@ -10,8 +10,11 @@ const Layout = (props:{
     }) => {
 
     const isLoggedIn = () => {
-        const loggedIn = localStorage.getItem("isLoggedIn")
-        return loggedIn === "true"
+        const loggedIn = localStorage.getItem("token")
+        if(loggedIn && loggedIn!='undefined')
+            return true
+        else
+            return false
     }
 
     if(!isLoggedIn()){

@@ -4,7 +4,7 @@ const Button = (props:{
     type?:string,
     value?:string,
     className?: string,
-    onClick?:VoidFunction,
+    onClick?:any,
     disabled?:boolean
 }) => {
 

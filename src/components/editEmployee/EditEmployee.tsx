@@ -1,17 +1,20 @@
 import { useParams } from "react-router-dom"
 import EmployeeForm from "../employeeForm/EmployeeForm"
-import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
+import { useGetEmployeeListQuery, useGetEmployeeQuery } from "../../api-service/employees/employee.api"
+import { type Employee } from "../../store/employee/employee.types"
 
 const EditEmployee = () => {
 
     const {id}=useParams()
-    const dispatch = useDispatch()
-    const employeeList = useSelector((state:any)=> state.employees)
-    const [employee,setEmployee] = useState(employeeList.find((employee:any) => employee.employeeId == id))
+    const { data: employeeDetails } = useGetEmployeeQuery({id:parseInt(id)})
+    // const employeeList = useSelector((state:any)=> state.employees)
+
+    const [employee,setEmployee] = useState(employeeDetails)
 
     const handleEdit = (event:Event) => {
+        {/*
         event.preventDefault()
         dispatch({type:"UPDATE_EMPLOYEE",
             payload:{
@@ -19,6 +22,7 @@ const EditEmployee = () => {
                 employee:employee
             }
         })
+        */}
     }
 
     return(

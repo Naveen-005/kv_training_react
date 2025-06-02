@@ -5,21 +5,39 @@ import Input from "../input/Input"
 import React, { useEffect, useRef, useState } from "react"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { useNavigate } from "react-router-dom"
+import { useLoginMutation } from "../../api-service/auth/login.api"
+
 
 const FormComponent = () => {
 
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
+    const [error, setError]=useState("")
+
+    const [login, {isLoading}] = useLoginMutation()
 
     const navigate = useNavigate()
-
-    const [usernameError,setUsernameError]=useState(false)
 
     const [showPassword,setShowPassword]=useLocalStorage('showPassword')
 
     const handleUsernameChange = (event:React.ChangeEvent<HTMLInputElement>) => {
 
         setUsername(event.target.value)
+    }
+
+    const handleLogin = async (event:Event) => {
+        event.preventDefault()
+        login({
+            email:username,
+            password:password
+        }).unwrap()
+        .then((response) => {
+            localStorage.setItem("token",response.accessToken)
+            navigate("/employees")
+        }).catch((error)=>{
+            setError(error.data.message)
+        })
+  
     }
 
     
@@ -31,17 +49,6 @@ const FormComponent = () => {
 
     const usernameRef = useRef<HTMLInputElement>(null);
 
-    useEffect(()=>{
-
-        if(username.length > 10)
-            setUsernameError(true)
-
-        return () => {
-            setUsernameError(false)
-        }
-
-    },[username])
-
     useEffect(() => {
 
         if(usernameRef.current){
@@ -52,16 +59,6 @@ const FormComponent = () => {
     const handlePasswordChange = (event:React.ChangeEvent<HTMLInputElement>) => {
 
         setPassword(event.target.value)
-    }
-
-    const handleLogin = () => {
-
-        if(username=='admin' && password=="admin"){
-            localStorage.setItem("isLoggedIn","true")
-            navigate('/employees')
-        }
-            
-
     }
 
     return (
@@ -79,12 +76,6 @@ const FormComponent = () => {
                             className="endAdornment" onClick={()=>{setUsername('')}}
                             disabled={username.length<1}/>}/>
                     
-                    {
-                        usernameError &&
-                            <p className="error" >Username Exceeded 10 characters</p>
-                        
-                    }
-                    
                     <Input type={showPassword?"text":"password"} placeholder="Password" name="password" 
                         id="password" className="form-element" value={password} 
                         onChange={handlePasswordChange}
@@ -95,12 +86,15 @@ const FormComponent = () => {
                             onChange={handleCheckboxChange}/>
                         <span className="label"> Show Password </span>
                     </div>
+
+                    <p className="error">{error}</p>
                     
                     
                     <Button type="submit" value="Login" className="form-element login-btn"
-                        disabled={username.length<1 || password.length<1} onClick={handleLogin}/>
+                        disabled={username.length<1 || password.length<1 || isLoading} onClick={handleLogin}/>
 
                 </form>
+                
             </div>
     
     )
