@@ -3,6 +3,7 @@ import EmployeeRow from '../employeeRow/EmployeeRow'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../store/store'
 
 const EmployeeList = () => {
 
@@ -47,15 +48,15 @@ const EmployeeList = () => {
     // }]
 
 
-    const employeeList = useSelector((state:any)=> state.employees)
+    const employeeList = useAppSelector((state:any)=> state.employee.employees)
     
-    console.log(employeeList)
+    console.log("employee list= \n",employeeList)
 
     const [filteredEmployees, setFilteredEmployees] = useState(employeeList)
 
     useEffect(() => {
-        console.log('useEffect')
-        console.log(employeeList)
+        // console.log('useEffect')
+        // console.log(employeeList)
         const filterStatus=searchParams.get('status')
         if(filterStatus && filterStatus!='All'){
 

@@ -34,7 +34,7 @@ const EmployeeForm = (props:{
 
     useEffect(()=>{
         initialDetails=props.employee
-        console.log("initial details =\n",initialDetails)
+        // console.log("initial details =\n",initialDetails)
     },[])
     
 

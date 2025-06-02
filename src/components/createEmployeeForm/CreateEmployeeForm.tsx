@@ -3,6 +3,9 @@ import './CreateEmployeeForm.css'
 import EmployeeForm from '../employeeForm/EmployeeForm'
 import { useState } from 'react'
 import { useDispatch  } from 'react-redux'
+import { addEmployee } from '../../store/employee/employeeReducer'
+import type { Employee } from '../../store/employee/employee.types'
+import { useAppDispatch } from '../../store/store'
 
 
 const CreateEmployeeForm = () => {
@@ -10,11 +13,11 @@ const CreateEmployeeForm = () => {
     const [employee,setEmployee]= useState({
         name:"",
         email:"",
-        age:"",
+        age:0,
         password:"",
         employeeId:"",
-        dateOfJoining:"",
-        experience:"",
+        dateOfJoining:new Date(),
+        experience:0,
         department_id:"",
         role:"",
         status:"",
@@ -26,15 +29,18 @@ const CreateEmployeeForm = () => {
         }
     })
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const handleCreate = (event:Event) => {
         event.preventDefault()
-        dispatch({type:"ADD_EMPLOYEE",
-            payload:{
-                employee:employee
-            }
-        })
+        // dispatch({type:"ADD_EMPLOYEE",
+        //     payload:{
+        //         employee:employee
+        //     }
+        // })
+
+        const action = addEmployee(employee)
+        dispatch(action)
     }
 
     
