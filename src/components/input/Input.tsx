@@ -6,7 +6,7 @@ const Input = (props:{
     name?:string,
     id?:string,
     className?:string
-    value?:string
+    value?:string | number
     onChange?: (event: ChangeEvent<HTMLInputElement>)=>void
     ref?:Ref<HTMLInputElement>
     endAdornment?: React.ReactNode

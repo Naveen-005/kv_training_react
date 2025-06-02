@@ -38,11 +38,11 @@ export interface Employee {
   address: Address;
   password: string;
   role: string;
-  dateOfJoining: Date;
+  dateOfJoining: string;
   experience: number;
   status: string;
   // departmentId: number | string;
-  department_id: string;
+  department_id: number;
 }
 
 export const EMPLOYEE_ACTION_TYPES = {

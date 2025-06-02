@@ -2,11 +2,12 @@ const SelectFormElement = (props:{
     label: string,
     disabled:string,
     className?:string,
-    value?:string,
+    value?:string | number,
     name?:string,
     onChange?:React.ChangeEventHandler<HTMLSelectElement>,
     options:{
-        value:string
+        name:string,
+        value:number | string
     }[]
 }) => {
 
@@ -21,7 +22,7 @@ const SelectFormElement = (props:{
                     <option value="" disabled selected>{props.disabled}</option>
                     {
                         props.options.map(element => {
-                            return <option value={element.value}>{element.value}</option>
+                            return <option value={element.value}>{element.name}</option>
                         })
                     }
                     

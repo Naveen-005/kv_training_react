@@ -17,8 +17,30 @@ export const employeeApi = baseApi.injectEndpoints({
                 method: 'DELETE'
             }),
             invalidatesTags: ['EMPLOYEES']
+        }),
+        createEmployee: builder.mutation<Employee,Employee>({
+            query:(payload) => ({
+                url:'/employees',
+                method: 'POST',
+                body: payload
+            }),
+            invalidatesTags: ['EMPLOYEES']
+        }),
+        updateEmployee: builder.mutation({
+            query:({payload,id}) => ({
+                url:`/employees/${id}`,
+                method: 'PUT',
+                body: payload
+            }),
+            invalidatesTags: ['EMPLOYEES']
         })
     })
 })
 
-export const {  useGetEmployeeListQuery, useDeleteEmployeeMutation, useGetEmployeeQuery } = employeeApi
+export const {  
+    useGetEmployeeListQuery, 
+    useDeleteEmployeeMutation, 
+    useGetEmployeeQuery, 
+    useCreateEmployeeMutation,
+    useUpdateEmployeeMutation,
+} = employeeApi

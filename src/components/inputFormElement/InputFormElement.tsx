@@ -5,7 +5,7 @@ const InputFormElement = (props:{
     label:string,
     placeholer:string,
     className:string,
-    value?:string,
+    value?:string | number,
     disabled?:boolean,
     onChange?:(event: React.ChangeEvent<HTMLInputElement>)=>void,
     name?:string,

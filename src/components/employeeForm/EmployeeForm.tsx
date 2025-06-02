@@ -2,33 +2,35 @@ import { useEffect } from "react"
 import Input from "../input/Input"
 import InputFormElement from "../inputFormElement/InputFormElement"
 import SelectFormElement from "../selectFormElement/SelectFormElement"
+import type { Employee } from "../../store/employee/employee.types"
 
 const EmployeeForm = (props:{
     buttonType:string,
     buttonValue:string,
     disableIdEdit?:boolean,
-    employee?:any,
+    employee:Employee,
     setEmployee?:any,
     onConfirm?:Function,
     
 }) => {
 
     const departmentOptions= [
-        {value:"Development"},
-        {value:"Testing"},
-        {value:"Quality Assurance"}
+        {name:"Marketing",value:1},
+        {name:"Advertisements",value:2},
+        {name:"Quality Assurance",value:3},
+        {name:"Testing",value:4}
     ]
 
     const roleOptions = [
-        {value:"Senior"},
-        {value:"Lead"},
-        {value:"Associate"}
+        {value:"UI",name:"UI"},
+        {value:"DEVELOPER",name:"DEVELOPER"},
+        {value:"HR",name:"HR"}
     ]
 
     const statusOptions = [
-        {value:"Probation"},
-        {value:"Active"},
-        {value:"Inactive"}
+        {value:"PROBATION",name:"Probation"},
+        {value:"ACTIVE",name:"Active"},
+        {value:"INACTIVE",name:"Inactive"}
     ]
     let initialDetails={}
 
@@ -36,6 +38,7 @@ const EmployeeForm = (props:{
         initialDetails=props.employee
     },[])
     
+    const numberTypes=['experience','age','department_id']
 
     const handleFormChange = (event:any) => {
 
@@ -43,6 +46,11 @@ const EmployeeForm = (props:{
         props.setEmployee((prevState:any)=>({
             ...prevState, [name]:value
         }))
+        if(numberTypes.includes(name)){
+            props.setEmployee((prevState:any)=>({
+                ...prevState, [name]:parseInt(value)
+        }))
+        }
     }
 
     const handleAddressChange = (event:any) => {
@@ -77,7 +85,8 @@ const EmployeeForm = (props:{
                         name="dateOfJoining"/>
 
                     <InputFormElement label="Experience (Yrs)" placeholer="2" className='form-input' 
-                        value={props.employee?.experience} onChange={handleFormChange} name="experience"/>
+                        value={props.employee?.experience} onChange={handleFormChange} name="experience"
+                        type="number" />
 
                     <InputFormElement label="Email ID" placeholer="Email ID" className='form-input' 
                         value={props.employee?.email} onChange={handleFormChange} name="email"/>
