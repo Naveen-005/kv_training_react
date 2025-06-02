@@ -26,9 +26,9 @@ const EmployeeForm = (props:{
     ]
 
     const statusOptions = [
-        {value:"Available"},
-        {value:"On project"},
-        {value:"On leave"}
+        {value:"Probation"},
+        {value:"Active"},
+        {value:"Inactive"}
     ]
     let initialDetails={}
 
@@ -88,7 +88,8 @@ const EmployeeForm = (props:{
                         name="password" />
 
                     <InputFormElement label="Employee ID" placeholer="Employee Id" onChange={handleFormChange}
-                        className='form-input' value={props.employee.employeeId} name="employeeId" disabled={props.disableIdEdit}/>
+                        className='form-input' value={props.employee.employeeId} name="employeeId" 
+                        disabled={props.disableIdEdit}/>
 
                     
 
@@ -120,7 +121,8 @@ const EmployeeForm = (props:{
                 </div>
 
                 <div className="btn-group">
-                    <Input className="primary button" type={props.buttonType} value={props.buttonValue} onClick={props.onConfirm}/>
+                    <Input className="primary button" type={props.buttonType} value={props.buttonValue} 
+                        onClick={props.onConfirm}/>
                     <Input className="secondary button" type="reset" value="Cancel" onClick={resetForm}/>
                 </div>
 
