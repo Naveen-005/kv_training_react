@@ -3,6 +3,7 @@ import './CreateEmployeeForm.css'
 import EmployeeForm from '../employeeForm/EmployeeForm'
 import { useState } from 'react'
 import { useCreateEmployeeMutation } from '../../api-service/employees/employee.api'
+import { useNavigate } from 'react-router-dom'
 
 
 const CreateEmployeeForm = () => {
@@ -26,13 +27,21 @@ const CreateEmployeeForm = () => {
         }
     })
 
-    // const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const [createEmployee] = useCreateEmployeeMutation()
 
     const handleCreate = (event:Event) => {
         event.preventDefault()
         createEmployee(employee)
+        .unwrap()
+        .then(()=>{
+            alert("Employee Created")
+            navigate("/employees")
+        })
+        .catch((error)=>{
+            alert(error.data.message)
+        })
     }
 
     

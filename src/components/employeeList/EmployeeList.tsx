@@ -11,8 +11,6 @@ const EmployeeList = () => {
 
     const {data: employeeList} = useGetEmployeeListQuery()
  
-    console.log("employee list= \n",employeeList)
-
     const [filteredEmployees, setFilteredEmployees] = useState(employeeList)
 
     useEffect(() => {

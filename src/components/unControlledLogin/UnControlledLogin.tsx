@@ -1,11 +1,9 @@
 import "./Login.css";
-// import LoginInput from "./LoginInput";
 import LoginInput from "./LoginInput";
 import { useRef, useEffect } from "react";
 import kvLogo from "/assets/kv-logo.png";
 import kvLoginImg from "/assets/kv-login.jpeg";
 import Button from "./Button";
-// import Button from "../button/Button";
 
 const UncontrolledLogin = () => {
   const usernameRef = useRef<HTMLInputElement | null>(null);
@@ -61,13 +59,10 @@ const UncontrolledLogin = () => {
       return
     if(usernameRef.current.value.length>0 && passwordRef.current.value.length>0){
       loginButtonRef.current.disabled=false
-      // loginButtonRef.current.onclick=handleSubmit
     }else{
 
       loginButtonRef.current.disabled=true
     }
-
-
 
   }
 
@@ -75,11 +70,6 @@ const UncontrolledLogin = () => {
     updateLoginButton()
     updateClearButton()
   }
-
-  // const handleSubmit = () => {
-
-  //   console.log("submit")
-  // }
 
   return (
     <div className="content">
@@ -103,8 +93,11 @@ const UncontrolledLogin = () => {
                     label="Username"
                     ref={usernameRef}
                     onChange={changeMultiple}
-                    endAdornment={<Button type="button" onClick={clearUserName} disabled={true} ref={clearButtonRef}>Clear</Button>}
-                    />
+                    endAdornment={
+                      <Button type="button" onClick={clearUserName} disabled={true} ref={clearButtonRef}>
+                        Clear
+                      </Button>
+                }/>
                 
             </div>
             

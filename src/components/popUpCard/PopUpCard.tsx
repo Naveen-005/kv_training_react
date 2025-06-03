@@ -5,7 +5,6 @@ const PopUpCard = (props:{
     onConfirm:any
 }) => {
 
-    // const navigate = useNavigate()
 
     const handlePopUpConfirm = () => {
         props.onConfirm()

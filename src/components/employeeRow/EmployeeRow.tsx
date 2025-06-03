@@ -1,7 +1,6 @@
 import { useState } from "react"
 import PopUpCard from "../popUpCard/PopUpCard"
 import { useNavigate } from "react-router-dom"
-// import { useDispatch } from "react-redux"
 import { useDeleteEmployeeMutation } from "../../api-service/employees/employee.api"
 
 const EmployeeRow = (props:{
@@ -16,7 +15,6 @@ const EmployeeRow = (props:{
     }
 }) => {
 
-    // const dispatch = useDispatch()
     const [deleteEmployee] = useDeleteEmployeeMutation()
 
     const navigate = useNavigate()

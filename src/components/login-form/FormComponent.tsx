@@ -1,6 +1,5 @@
 import Button from "../button/Button"
 import './FormComponent.css'
-// import logo from "../../assets/kv-logo.png"
 import Input from "../input/Input"
 import React, { useEffect, useRef, useState } from "react"
 import { useLocalStorage } from "../../hooks/useLocalStorage"

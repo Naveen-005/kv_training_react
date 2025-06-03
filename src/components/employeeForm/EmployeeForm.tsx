@@ -3,6 +3,8 @@ import Input from "../input/Input"
 import InputFormElement from "../inputFormElement/InputFormElement"
 import SelectFormElement from "../selectFormElement/SelectFormElement"
 import type { Employee } from "../../store/employee/employee.types"
+import { useGetDepartmentListQuery } from "../../api-service/departments/department.api"
+import { useNavigate } from "react-router-dom"
 
 const EmployeeForm = (props:{
     buttonType:string,
@@ -14,13 +16,20 @@ const EmployeeForm = (props:{
     
 }) => {
 
-    const departmentOptions= [
-        {name:"Marketing",value:1},
-        {name:"Advertisements",value:2},
-        {name:"Quality Assurance",value:3},
-        {name:"Testing",value:4}
-    ]
+    const {data: departments} = useGetDepartmentListQuery()
+    const navigate = useNavigate()
 
+    let departmentOptions:{name:string,value:number}[] = []
+
+    if(departments){
+        departments.forEach((dept:any)=>{
+            departmentOptions.push({
+                name:dept.name,
+                value:parseInt(dept.id)
+            })
+        })
+    }
+    
     const roleOptions = [
         {value:"UI",name:"UI"},
         {value:"DEVELOPER",name:"DEVELOPER"},
@@ -49,7 +58,7 @@ const EmployeeForm = (props:{
         if(numberTypes.includes(name)){
             props.setEmployee((prevState:any)=>({
                 ...prevState, [name]:parseInt(value)
-        }))
+            }))
         }
     }
 
@@ -67,7 +76,7 @@ const EmployeeForm = (props:{
 
     const resetForm = () => {
 
-        props.setEmployee(initialDetails)
+        navigate(-1)
         
     }
 
@@ -91,9 +100,19 @@ const EmployeeForm = (props:{
                     <InputFormElement label="Email ID" placeholer="Email ID" className='form-input' 
                         value={props.employee?.email} onChange={handleFormChange} name="email"/>
 
-                    <InputFormElement label="Password" placeholer="Password" 
+                    {
+                        !props.disableIdEdit &&
+
+                        <InputFormElement label="Password" placeholer="Password" 
                         className='form-input' value={props.employee?.password} onChange={handleFormChange}
                         name="password" />
+                    }   
+
+                    <InputFormElement label="Age" placeholer="Age" className='form-input' 
+                        value={props.employee?.age} onChange={handleFormChange} name="age"
+                        type="number" />
+
+                    
 
                     <InputFormElement label="Employee ID" placeholer="Employee Id" onChange={handleFormChange}
                         className='form-input' value={props.employee?.employeeId} name="employeeId" 
@@ -125,6 +144,8 @@ const EmployeeForm = (props:{
                         <Input type="text" placeholder="Pincode" className='form-input' 
                             value={props.employee?.address?.pincode} onChange={handleAddressChange} name="pincode"/>
                     </div>
+
+                    
 
                 </div>
 

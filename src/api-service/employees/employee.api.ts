@@ -7,7 +7,7 @@ export const employeeApi = baseApi.injectEndpoints({
             query: () => '/employees',
             providesTags:['EMPLOYEES']
         }),
-        getEmployee: builder.query<Employee,{id:number}>({
+        getEmployee: builder.query({
             query: ({id}) => `/employees/${id}`,
             providesTags:['EMPLOYEES']
         }),

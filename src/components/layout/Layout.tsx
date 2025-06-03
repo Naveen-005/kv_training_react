@@ -1,7 +1,6 @@
 import './Layout.css'
 import Sidebar from '../sidebar/Sidebar'
 import { Navigate, Outlet } from 'react-router-dom'
-// import Button from '../button/Button'
 
 const Layout = (props:{
 

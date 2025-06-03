@@ -1,11 +1,7 @@
-// import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { configureStore } from "@reduxjs/toolkit";
 import employeeReducer from './employee/employeeReducer';
 import { useDispatch, useSelector } from "react-redux";
 import baseApi from "../api-service/api";
-
-
-// const store = createStore(employeeReducer,undefined,applyMiddleware(logger));
 
 const store = configureStore({
     reducer:{
