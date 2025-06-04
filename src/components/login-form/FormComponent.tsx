@@ -66,20 +66,29 @@ const FormComponent = () => {
                 <form action="">
                     <img src="/assets/kv-logo.png" alt="" className="logo-image" />
                     <div className="over-box">
-                        <label htmlFor="username" ><p>username</p></label>
+                        <label htmlFor="username" ><p>Username</p></label>
                     </div>
                     <Input type="text" placeholder=" " id="username" name="username" 
                         className="form-element" value={username} 
                         onChange={handleUsernameChange} ref={usernameRef}
-                        endAdornment={<Button type="button" value="Clear" 
+                        endAdornment={<input type="button" value="Clear" 
                             className="endAdornment" onClick={()=>{setUsername('')}}
-                            disabled={username.length<1}/>}/>
+                            disabled={username.length<1}/>} label="Username"/>
+                    {
+                        username.length>=20 &&
+                            <p className="error">Username must be less than 20 characters</p>
+                    }
+                    
+
+                    <div className="over-box">
+                        <label htmlFor="password" ><p>Password</p></label>
+                    </div>
                     
                     <Input type={showPassword?"text":"password"} placeholder="Password" name="password" 
-                        id="password" className="form-element" value={password} 
+                        id="password" className="form-element" value={password}  label="Password"
                         onChange={handlePasswordChange}
                         />
-
+                    
                     <div className="parentContainer" >
                         <Input type="checkbox" className="checkbox" checked={showPassword as boolean}
                             onChange={handleCheckboxChange}/>
@@ -89,7 +98,7 @@ const FormComponent = () => {
                     <p className="error">{error}</p>
                     
                     
-                    <Button type="submit" value="Login" className="form-element login-btn"
+                    <Button type="submit" value="Login" className="form-element login-btn" text="Login" name="Login"
                         disabled={username.length<1 || password.length<1 || isLoading} onClick={handleLogin}/>
 
                 </form>

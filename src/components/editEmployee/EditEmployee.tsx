@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 const EditEmployee = () => {
 
     const {id}=useParams()
-    const { data: employeeDetails } = useGetEmployeeQuery({id:parseInt(id)})
+    const { data: employeeDetails } = useGetEmployeeQuery({id:parseInt(id as string)})
 
     const [employee,setEmployee] = useState(employeeDetails)
 

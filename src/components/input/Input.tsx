@@ -19,6 +19,7 @@ const Input = (props:{
 
     return(
         <div className="parentInput">
+            {/* <label htmlFor={props.id}>{props.label}</label> */}
             <input type={props.type} 
                 placeholder={props.placeholder}
                 name={props.name}

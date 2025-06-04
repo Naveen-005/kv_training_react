@@ -1,0 +1,115 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login Page > should match snapshot 1`] = `
+<div>
+  <main>
+    <div
+      class="blue-box"
+    >
+      <div
+        class="photo-circle"
+      >
+        <img
+          alt="login art"
+          class="login-image"
+          src="/assets/kv-login.jpeg"
+        />
+      </div>
+    </div>
+    <div
+      class="login-form"
+    >
+      <form
+        action=""
+      >
+        <img
+          alt=""
+          class="logo-image"
+          src="/assets/kv-logo.png"
+        />
+        <div
+          class="over-box"
+        >
+          <label
+            for="username"
+          >
+            <p>
+              Username
+            </p>
+          </label>
+        </div>
+        <div
+          class="parentInput"
+        >
+          <input
+            class="form-element"
+            id="username"
+            name="username"
+            placeholder=" "
+            type="text"
+            value=""
+          />
+          <input
+            class="endAdornment"
+            disabled=""
+            type="button"
+            value="Clear"
+          />
+        </div>
+        <div
+          class="over-box"
+        >
+          <label
+            for="password"
+          >
+            <p>
+              Password
+            </p>
+          </label>
+        </div>
+        <div
+          class="parentInput"
+        >
+          <input
+            class="form-element"
+            id="password"
+            name="password"
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="parentContainer"
+        >
+          <div
+            class="parentInput"
+          >
+            <input
+              class="checkbox"
+              type="checkbox"
+            />
+          </div>
+          <span
+            class="label"
+          >
+             Show Password 
+          </span>
+        </div>
+        <p
+          class="error"
+        />
+        <button
+          class="form-element login-btn"
+          disabled=""
+          name="Login"
+          type="submit"
+          value="Login"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </main>
+</div>
+`;
