@@ -6,7 +6,7 @@ const Input = (props:{
     name?:string,
     id?:string,
     className?:string
-    value?:string
+    value?:string | number
     onChange?: (event: ChangeEvent<HTMLInputElement>)=>void
     ref?:Ref<HTMLInputElement>
     endAdornment?: React.ReactNode
@@ -19,6 +19,7 @@ const Input = (props:{
 
     return(
         <div className="parentInput">
+            {/* <label htmlFor={props.id}>{props.label}</label> */}
             <input type={props.type} 
                 placeholder={props.placeholder}
                 name={props.name}

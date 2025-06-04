@@ -1,18 +1,20 @@
 import './Button.css'
 
 const Button = (props:{
-    type?:string,
+    type?:"submit" | "reset" | "button",
     value?:string,
     className?: string,
-    onClick?:VoidFunction,
-    disabled?:boolean
+    onClick?:any,
+    disabled?:boolean,
+    text?:string,
+    name?:string
 }) => {
 
     return(
         <>
-            <input type={props.type} value={props.value} className={props.className} onClick={props.onClick} 
+            <button type={props.type} value={props.value} className={props.className} onClick={props.onClick} 
             
-                disabled={props.disabled}/>
+                disabled={props.disabled} name={props.name}>{props.name}</button>
         </>
         
 

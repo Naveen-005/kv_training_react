@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import './Sidebar.css'
-// import kv_logo from '../../assets/kv-logo.png'
-//import icon from '../../assets/icon.svg'
 
 const Sidebar = (props:{
     pageName:string

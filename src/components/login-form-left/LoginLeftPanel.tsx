@@ -1,4 +1,3 @@
-// import kvLoginImage from '../../assets/kv-login.jpeg'
 import './LoginLeftPanel.css'
 
 const LoginLeftPanel = () => {

@@ -1,7 +1,6 @@
 import './Layout.css'
 import Sidebar from '../sidebar/Sidebar'
 import { Navigate, Outlet } from 'react-router-dom'
-// import Button from '../button/Button'
 
 const Layout = (props:{
 
@@ -10,8 +9,11 @@ const Layout = (props:{
     }) => {
 
     const isLoggedIn = () => {
-        const loggedIn = localStorage.getItem("isLoggedIn")
-        return loggedIn === "true"
+        const loggedIn = localStorage.getItem("token")
+        if(loggedIn && loggedIn!='undefined')
+            return true
+        else
+            return false
     }
 
     if(!isLoggedIn()){

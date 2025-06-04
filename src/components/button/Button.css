@@ -4,6 +4,13 @@
     height: 35px;
     border: 1px solid #EBE9ED;
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-btn:disabled{
+    background-color: grey;
 }
 
 .form-element {

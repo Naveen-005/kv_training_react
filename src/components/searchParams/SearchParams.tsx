@@ -10,12 +10,10 @@ const SrchPrms = () => {
     const handleGet = () => {
 
         const status=searchParams.get("status")
-        console.log("status = "+status)
     }
 
     const handleSet = () => {
 
-        // setSearchParams("status","Hello")
         setSearchParams({status:"Hello",role:"HR"})
     }
 

@@ -2,7 +2,8 @@ import './CreateEmployeeForm.css'
 
 import EmployeeForm from '../employeeForm/EmployeeForm'
 import { useState } from 'react'
-import { useDispatch  } from 'react-redux'
+import { useCreateEmployeeMutation } from '../../api-service/employees/employee.api'
+import { useNavigate } from 'react-router-dom'
 
 
 const CreateEmployeeForm = () => {
@@ -10,12 +11,12 @@ const CreateEmployeeForm = () => {
     const [employee,setEmployee]= useState({
         name:"",
         email:"",
-        age:"",
+        age:25,
         password:"",
         employeeId:"",
         dateOfJoining:"",
-        experience:"",
-        department_id:"",
+        experience:0,
+        department_id:1,
         role:"",
         status:"",
         address:{
@@ -26,14 +27,20 @@ const CreateEmployeeForm = () => {
         }
     })
 
-    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const [createEmployee] = useCreateEmployeeMutation()
 
     const handleCreate = (event:Event) => {
         event.preventDefault()
-        dispatch({type:"ADD_EMPLOYEE",
-            payload:{
-                employee:employee
-            }
+        createEmployee(employee)
+        .unwrap()
+        .then(()=>{
+            alert("Employee Created")
+            navigate("/employees")
+        })
+        .catch((error)=>{
+            alert(error.data.message)
         })
     }
 

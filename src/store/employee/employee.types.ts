@@ -37,11 +37,12 @@ export interface Employee {
   age: number;
   address: Address;
   password: string;
-  role: Role;
-  dateOfJoining: Date;
+  role: string;
+  dateOfJoining: string;
   experience: number;
-  status: Status;
-  departmentId: number | string;
+  status: string;
+  // departmentId: number | string;
+  department_id: number;
 }
 
 export const EMPLOYEE_ACTION_TYPES = {

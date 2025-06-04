@@ -1,25 +1,42 @@
 import Button from "../button/Button"
 import './FormComponent.css'
-// import logo from "../../assets/kv-logo.png"
 import Input from "../input/Input"
 import React, { useEffect, useRef, useState } from "react"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { useNavigate } from "react-router-dom"
+import { useLoginMutation } from "../../api-service/auth/login.api"
+
 
 const FormComponent = () => {
 
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
+    const [error, setError]=useState("")
+
+    const [login, {isLoading}] = useLoginMutation()
 
     const navigate = useNavigate()
-
-    const [usernameError,setUsernameError]=useState(false)
 
     const [showPassword,setShowPassword]=useLocalStorage('showPassword')
 
     const handleUsernameChange = (event:React.ChangeEvent<HTMLInputElement>) => {
 
         setUsername(event.target.value)
+    }
+
+    const handleLogin = async (event:Event) => {
+        event.preventDefault()
+        login({
+            email:username,
+            password:password
+        }).unwrap()
+        .then((response) => {
+            localStorage.setItem("token",response.accessToken)
+            navigate("/employees")
+        }).catch((error)=>{
+            setError(error.data.message)
+        })
+  
     }
 
     
@@ -30,17 +47,6 @@ const FormComponent = () => {
     }
 
     const usernameRef = useRef<HTMLInputElement>(null);
-
-    useEffect(()=>{
-
-        if(username.length > 10)
-            setUsernameError(true)
-
-        return () => {
-            setUsernameError(false)
-        }
-
-    },[username])
 
     useEffect(() => {
 
@@ -54,53 +60,49 @@ const FormComponent = () => {
         setPassword(event.target.value)
     }
 
-    const handleLogin = () => {
-
-        if(username=='admin' && password=="admin"){
-            localStorage.setItem("isLoggedIn","true")
-            navigate('/employees')
-        }
-            
-
-    }
-
     return (
         
             <div className="login-form">
                 <form action="">
                     <img src="/assets/kv-logo.png" alt="" className="logo-image" />
                     <div className="over-box">
-                        <label htmlFor="username" ><p>username</p></label>
+                        <label htmlFor="username" ><p>Username</p></label>
                     </div>
                     <Input type="text" placeholder=" " id="username" name="username" 
                         className="form-element" value={username} 
                         onChange={handleUsernameChange} ref={usernameRef}
-                        endAdornment={<Button type="button" value="Clear" 
+                        endAdornment={<input type="button" value="Clear" 
                             className="endAdornment" onClick={()=>{setUsername('')}}
-                            disabled={username.length<1}/>}/>
-                    
+                            disabled={username.length<1}/>} label="Username"/>
                     {
-                        usernameError &&
-                            <p className="error" >Username Exceeded 10 characters</p>
-                        
+                        username.length>=20 &&
+                            <p className="error">Username must be less than 20 characters</p>
                     }
                     
+
+                    <div className="over-box">
+                        <label htmlFor="password" ><p>Password</p></label>
+                    </div>
+                    
                     <Input type={showPassword?"text":"password"} placeholder="Password" name="password" 
-                        id="password" className="form-element" value={password} 
+                        id="password" className="form-element" value={password}  label="Password"
                         onChange={handlePasswordChange}
                         />
-
+                    
                     <div className="parentContainer" >
                         <Input type="checkbox" className="checkbox" checked={showPassword as boolean}
                             onChange={handleCheckboxChange}/>
                         <span className="label"> Show Password </span>
                     </div>
+
+                    <p className="error">{error}</p>
                     
                     
-                    <Button type="submit" value="Login" className="form-element login-btn"
-                        disabled={username.length<1 || password.length<1} onClick={handleLogin}/>
+                    <Button type="submit" value="Login" className="form-element login-btn" text="Login" name="Login"
+                        disabled={username.length<1 || password.length<1 || isLoading} onClick={handleLogin}/>
 
                 </form>
+                
             </div>
     
     )
