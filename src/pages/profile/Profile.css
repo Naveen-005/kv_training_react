@@ -1,0 +1,30 @@
+.layer{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.layer-bottom-profile{
+
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #2c292970;
+    padding: 30px;
+ 
+}
+
+.icon{
+    padding-top: 5px;
+}
+
+.label1{
+    font-weight: 100;
+    color: #585555;
+    font-size: small;
+    margin-left: 1px;
+    margin-bottom: 10px;
+}
+
+.address-profile{
+    margin-right: 40px;
+}

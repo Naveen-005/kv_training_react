@@ -8,7 +8,7 @@ const EmployeeDetails = () => {
 
     const { id } = useParams()
 
-    const { data: employeeDetails } = useGetEmployeeQuery({id:parseInt(id)})
+    const { data: employeeDetails } = useGetEmployeeQuery({id:parseInt(id as string)})
 
     const navigate = useNavigate()
 

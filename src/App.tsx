@@ -10,6 +10,7 @@ import EmployeeList from './components/employeeList/EmployeeList'
 const EmployeeDetails = lazy(()=>import ('./components/employeeDetails/EmployeeDetails'))
 import SrchPrms from './components/searchParams/SearchParams'
 import EditEmployee from './components/editEmployee/EditEmployee'
+import Profile from './pages/profile/Profile'
 
 const LazyLoadedEmployeeDetails = () => {
   return(
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
       {path:":id", element:<LazyLoadedEmployeeDetails/>},
       {path:":id/edit",element: <EditEmployee/>}
     ]
+  },{
+
+    path:"/profile",
+    element: <Layout heading='Profile' pageName='EmployeeList'/> ,
+    children:[
+      {index:true, element: <Profile />}
+    ]
+
   },{
     path:"/test",
     element:<SrchPrms />
