@@ -8,6 +8,12 @@ const Sidebar = (props:{
 
     const navigate = useNavigate();
 
+    const handleLogout = () => {
+
+        localStorage.removeItem("token")
+        navigate("/login")
+    }
+
     return(
 
         <>
@@ -21,6 +27,18 @@ const Sidebar = (props:{
                             <img src="/assets/icon.svg" alt="icon" />
                         </div>
                         <p>{props.pageName}</p>
+                    </div>
+                    <div className="nav-item" onClick={() => {navigate("/profile")}}>
+                        <div className="icon-container">
+                            <img src="/assets/icon.svg" alt="icon" />
+                        </div>
+                        <p>Profile</p>
+                    </div>
+                    <div className="nav-item" onClick={handleLogout}>
+                        <div className="icon-container">
+                            <img src="/assets/logout.png" alt="icon" />
+                        </div>
+                        <p>Logout</p>
                     </div>
                 </nav>
             </aside>
