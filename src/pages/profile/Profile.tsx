@@ -16,15 +16,18 @@ const Profile = () => {
  
 
     const { data: user } = useGetEmployeeQuery({id:parseInt(id)})
-
-    console.log(user)
-
     
 
     return(
         <>
              <div className="heading-container">
-                <h1>Profile</h1>
+
+                <div className="row-container">
+                    <img src="assets/profile.png" alt="profile image" className="profile-icon"/>
+                    <h1>{user?.name}</h1>
+                </div>
+
+                
 
 
 

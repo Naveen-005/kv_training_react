@@ -30,7 +30,7 @@ const Sidebar = (props:{
                     </div>
                     <div className="nav-item" onClick={() => {navigate("/profile")}}>
                         <div className="icon-container">
-                            <img src="/assets/icon.svg" alt="icon" />
+                            <img src="/assets/profile-icon.png" alt="icon" />
                         </div>
                         <p>Profile</p>
                     </div>

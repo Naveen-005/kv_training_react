@@ -100,13 +100,7 @@ const EmployeeForm = (props:{
                     <InputFormElement label="Email ID" placeholer="Email ID" className='form-input' 
                         value={props.employee?.email} onChange={handleFormChange} name="email"/>
 
-                    {
-                        !props.disableIdEdit &&
-
-                        <InputFormElement label="Password" placeholer="Password" 
-                        className='form-input' value={props.employee?.password} onChange={handleFormChange}
-                        name="password" />
-                    }   
+                     
 
                     <InputFormElement label="Age" placeholer="Age" className='form-input' 
                         value={props.employee?.age} onChange={handleFormChange} name="age"
@@ -144,6 +138,14 @@ const EmployeeForm = (props:{
                         <Input type="text" placeholder="Pincode" className='form-input' 
                             value={props.employee?.address?.pincode} onChange={handleAddressChange} name="pincode"/>
                     </div>
+
+                    {
+                        !props.disableIdEdit &&
+
+                        <InputFormElement label="Password" placeholer="Password" 
+                        className='form-input' value={props.employee?.password} onChange={handleFormChange}
+                        name="password" />
+                    }  
 
                     
 
